@@ -191,8 +191,8 @@ const App: React.FC = () => {
       {/* --- HEADER --- */}
       <header className="w-full max-w-[1100px] mx-auto p-4 flex items-center gap-3 flex-wrap">
          {/* Logo Placeholder */}
-         <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center border border-white/20 shrink-0">
-             <div className="w-6 h-6 rounded-full border-2 border-yellow-400 flex items-center justify-center">
+         <div className="w-10 h-10 rounded-full flex items-center justify-center border shrink-0">
+             <div className="w-6 h-6 rounded-full flex items-center justify-center">
                 <img 
                 src="/img/logo.png" 
                 alt="Daily Base App Logo" 
