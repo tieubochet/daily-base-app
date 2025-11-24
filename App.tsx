@@ -193,7 +193,7 @@ const App: React.FC = () => {
          {/* Logo Placeholder */}
          <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center border border-white/20 shrink-0">
              <div className="w-6 h-6 rounded-full border-2 border-yellow-400 flex items-center justify-center">
-                <span className="text-[10px] font-bold text-yellow-400">DB</span>
+                <img src="/img/logo.png" alt="Daily Base App Logo" class="w-10 h-10 rounded-full shadow-lg">
              </div>
          </div>
          
