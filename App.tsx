@@ -11,6 +11,7 @@ import {
   useWriteContract,
   useWaitForTransactionReceipt,
 } from 'wagmi';
+import { base } from 'wagmi/chains';
 import { formatUnits } from 'viem';
 import {
   Settings,
@@ -131,6 +132,7 @@ const App: React.FC = () => {
             functionName: 'checkIn',
             args: [],
             account: address,
+            chain: base,
         });
     } catch (e) {
         console.error("Simulation error (expected if no wallet connected to real chain)", e);
@@ -149,7 +151,7 @@ const App: React.FC = () => {
          
          <div className="mr-1 leading-[1.05]">
              <div className="text-[22px] font-extrabold text-white">Daily Base App</div>
-             <div className="text-xs opacity-90">Build your onchain habit</div>
+             <div className="text-xs opacity-90">Ecosystem - Superchain Eco</div>
          </div>
 
          {/* Superchain Button */}
