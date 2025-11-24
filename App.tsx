@@ -30,6 +30,7 @@ import {
 
 import { Card } from './components/Card';
 import { BadgeItem } from './components/BadgeItem';
+import { BadgeIcon } from './components/BadgeIcon';
 import {
   THEMES,
   SECTION_1_LINKS,
@@ -374,7 +375,8 @@ const App: React.FC = () => {
                 </div>
                 <div className="p-6 space-y-6">
                     <div className="flex flex-col items-center text-center">
-                         <img src={selectedBadge.image} alt={selectedBadge.name} className="w-24 h-24 rounded-2xl mb-4 border border-white/10" />
+                         {/* Replaced img with BadgeIcon */}
+                         <BadgeIcon name={selectedBadge.name} className="w-24 h-24 text-4xl mb-4" />
                          <span className="inline-block px-3 py-1 bg-white/10 text-xs font-bold rounded-full border border-white/20 mb-2">
                             {selectedBadge.tag}
                          </span>

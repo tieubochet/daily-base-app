@@ -1,6 +1,7 @@
 import React from 'react';
 import { Badge } from '../types';
 import { ExternalLink, Info } from 'lucide-react';
+import { BadgeIcon } from './BadgeIcon';
 
 interface BadgeItemProps {
   badge: Badge;
@@ -10,13 +11,9 @@ interface BadgeItemProps {
 export const BadgeItem: React.FC<BadgeItemProps> = ({ badge, onSelect }) => {
   return (
     <div className="flex flex-col md:flex-row items-start md:items-center gap-4 py-5 border-b border-white/10 last:border-0 w-full">
-      {/* Left: Icon/Image */}
+      {/* Left: Icon/Image (Auto-generated) */}
       <div className="shrink-0">
-        <img
-            src={badge.image}
-            alt={badge.name}
-            className="w-14 h-14 rounded-xl object-cover border border-white/10 bg-black/20 shadow-sm"
-        />
+        <BadgeIcon name={badge.name} className="w-14 h-14 text-xl" />
       </div>
 
       {/* Middle: Content */}
@@ -53,7 +50,7 @@ export const BadgeItem: React.FC<BadgeItemProps> = ({ badge, onSelect }) => {
                 href={link.url}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-2 h-9 px-4 rounded-lg text-sm font-bold bg-black text-white border border-white/20 hover:bg-gray-900 hover:scale-[1.02] transition-all w-full md:w-auto shadow-md whitespace-nowrap"
+                className="flex items-center justify-center gap-2 h-9 px-4 rounded-lg text-sm font-bold bg-[#FFC800] text-black border border-[#FFC800] hover:bg-[#FFD633] hover:scale-[1.02] transition-all w-full md:w-auto shadow-md whitespace-nowrap"
                 onClick={(e) => e.stopPropagation()}
             >
                 {link.name} <ExternalLink size={12} />
