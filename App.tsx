@@ -391,8 +391,8 @@ const App: React.FC = () => {
                          <p className="text-sm">{selectedBadge.howToProgress}</p>
                     </div>
                     
-                    <div>
-                        <h4 className="text-xs font-bold uppercase text-[#94A3B8] mb-3">Tiers</h4>
+                    <div className="bg-black/20 p-4 rounded-xl border border-white/10">
+                        <h4 className="text-xs font-bold uppercase text-[#94A3B8] mb-2">Tiers</h4>
                         <div className="flex gap-2 flex-wrap">
                             {selectedBadge.tiers.map((tier, idx) => (
                                 <span key={idx} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium">
