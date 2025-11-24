@@ -37,7 +37,7 @@ export const BadgeItem: React.FC<BadgeItemProps> = ({ badge, onSelect }) => {
               </button>
           </div>
           
-          <p className="text-sm text-secondary/80 leading-snug line-clamp-2 md:line-clamp-1 font-medium">
+          <p className="text-sm text-secondary/80 leading-snug font-medium">
               {badge.description}
           </p>
       </div>
