@@ -1,6 +1,6 @@
 import { Badge, LinkItem, Themes } from './types';
 
-// Matching the "Base Daily App" color scheme
+// Matching the "Base Lite" color scheme
 // Main BG: rgb(0, 58, 209) -> #003AD1
 // Text: rgb(230, 232, 240) -> #E6E8F0
 // Glass Card: rgba(0, 0, 0, 0.25)
@@ -46,6 +46,12 @@ export const SECTION_1_LINKS: LinkItem[] = [
   { name: 'Base Names', url: 'https://www.base.org/name/' },
   { name: 'Base App', url: 'https://join.base.app/' },
   { name: 'Base Build', url: 'https://www.base.org/build' },
+];
+
+export const ROUTINE_ITEMS = [
+    { label: 'Layer3 Quests', url: '#', primary: true },
+    { label: 'Claim $G daily', url: '#' },
+    { label: 'Lend on Aave', url: '#' }
 ];
 
 export const SECTION_2_LINKS_GOV: LinkItem[] = []; // Unused in new design

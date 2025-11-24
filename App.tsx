@@ -35,6 +35,7 @@ import {
   SECTION_1_LINKS,
   BADGES_DATA,
   FOOTER_LINKS,
+  ROUTINE_ITEMS,
 } from './constants';
 import { ThemeMode, Badge } from './types';
 
@@ -262,31 +263,80 @@ const App: React.FC = () => {
              )}
         </div>
 
-        {/* --- ECOSYSTEM SECTION --- */}
-        <Card className="text-center p-6">
-            <div className="font-extrabold text-lg mb-1">Ecosystem</div>
-            <div className="opacity-90 mb-4 text-sm">Explore Base resources & tools.</div>
-            <div className="flex flex-wrap justify-center gap-2">
-                {SECTION_1_LINKS.map((link, i) => (
-                    <a
-                        key={i}
-                        href={link.url}
-                        target="_blank"
+        {/* --- SPLIT SECTION: ECOSYSTEM (LEFT) & ROUTINES (RIGHT) --- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+            
+            {/* ECOSYSTEM (LEFT) */}
+            <Card className="flex flex-col items-start text-left p-6 h-full">
+                <div className="text-xs font-bold uppercase tracking-widest opacity-70 mb-2 text-secondary">Ecosystem</div>
+                <div className="opacity-90 mb-4 text-sm leading-relaxed text-secondary">
+                    Explore core identity & impact apps in the Base ecosystem.
+                </div>
+                
+                <div className="flex flex-wrap justify-start gap-2 mb-4">
+                    {SECTION_1_LINKS.map((link, i) => (
+                        <a
+                            key={i}
+                            href={link.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 h-8 px-3 rounded-md text-sm font-medium border border-white/20 bg-white/10 text-primary hover:bg-white/20 transition-colors"
+                        >
+                            {link.name}
+                        </a>
+                    ))}
+                </div>
+
+                <div className="mt-auto">
+                    <a 
+                        href="https://www.base.org/ecosystem" 
+                        target="_blank" 
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 h-9 px-3 rounded-xl text-sm font-semibold border border-white/20 bg-white/10 text-[#E6E8F0] hover:bg-white/20 transition-colors"
+                        className="text-sm font-bold flex items-center gap-1 hover:underline cursor-pointer text-primary"
                     >
-                        {link.name}
+                        Explore All Apps <ArrowRight size={12} />
                     </a>
-                ))}
-            </div>
-        </Card>
+                </div>
+            </Card>
+
+            {/* ROUTINES (RIGHT) */}
+            <Card className="text-center p-6 h-full flex flex-col items-center">
+                <div className="font-extrabold text-2xl mb-2 text-primary">Routines</div>
+                <div className="opacity-80 text-sm max-w-sm text-secondary mb-6">
+                    Keep a healthy onchain cadence: learn, earn, and keep reputation active.
+                </div>
+
+                <div className="flex flex-wrap justify-center gap-3 w-full">
+                    {ROUTINE_ITEMS.map((item, idx) => (
+                        <a
+                            key={idx}
+                            href={item.url}
+                            className={`
+                                flex items-center justify-center h-10 px-5 rounded-md text-sm font-bold transition-all flex-grow md:flex-grow-0
+                                ${item.primary 
+                                    ? 'bg-black text-white hover:bg-gray-900 border border-transparent' 
+                                    : 'bg-white text-black border border-gray-200 hover:bg-gray-50'
+                                }
+                            `}
+                        >
+                            {item.label}
+                        </a>
+                    ))}
+                </div>
+            </Card>
+
+        </div>
 
         {/* --- BADGES SECTION --- */}
         <Card className="text-center p-6">
-            <div className="font-extrabold text-lg mb-1">Badges</div>
-            <div className="opacity-90 mb-4 text-sm">Short, Base-aligned explanations to earn Superchain Eco badges with confidence.</div>
+            <div className="flex flex-col items-center mb-6">
+                <div className="font-extrabold text-2xl mb-2 text-primary">Badges</div>
+                <div className="opacity-80 text-sm max-w-lg text-secondary">
+                    Short, Base-aligned explanations to earn Superchain Eco badges with confidence.
+                </div>
+            </div>
             
-            <div className="flex flex-col items-center gap-4 mt-4 w-full">
+            <div className="flex flex-col items-center gap-4 w-full">
                 {BADGES_DATA.map((badge) => (
                     <BadgeItem key={badge.id} badge={badge} onSelect={setSelectedBadge} />
                 ))}
