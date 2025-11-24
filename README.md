@@ -1,0 +1,2 @@
+# daily-base-app
+Turn onchain activity into a habit. Complete daily check-ins, follow low-friction guides for badges, and level up your knowledge of the Superchain ecosystem effortlessly.
