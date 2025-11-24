@@ -60,7 +60,7 @@ export const SECTION_2_LINKS_ID: LinkItem[] = [];  // Unused in new design
 export const BADGES_DATA: Badge[] = [
   {
     id: 'creator-score',
-    image: 'https://picsum.photos/seed/creator/200',
+    image: '/badges/csbadge.png',
     name: 'Creator Score',
     tag: 'Superchain',
     description: 'A reputation metric that quantifies your creative contributions across platforms using verified data.',
@@ -69,26 +69,29 @@ export const BADGES_DATA: Badge[] = [
     tiers: ['Bronze', 'Silver', 'Gold'],
     links: [
       { name: 'Open Creator Score', url: 'https://www.creatorscore.app/' },
-      { name: 'Open Talent Protocol', url: 'https://app.talentprotocol.com/' }
+      { name: 'Open Talent Protocol', url: 'https://app.talentprotocol.com/' },
+      { name: 'Creator Score (docs)', url: 'https://docs.talentprotocol.com/docs/protocol-concepts/scoring-systems/creator-score' }
     ]
   },
   {
     id: 'builder-score',
-    image: 'https://picsum.photos/seed/builder/200',
+    image: '/badges/bsbadge.png',
     name: 'Builder Score',
     tag: 'Ethereum',
-    description: 'A builder reputation signal by Talent Protocol that aggregates onchain activity and public contributions.',
+    description: 'A builder reputation signal by Talent Protocol that aggregates onchain activity and public contributions to show your consistency and credibility as a builder.',
     whyItMatters: 'Show consistency and credibility as a builder.',
     howToProgress: 'Build and contribute to repos.',
     tiers: ['Novice', 'Builder', 'Architect'],
     links: [
       { name: 'Open Builder Score', url: 'https://app.talentprotocol.com/' },
-      { name: 'Builder Rewards', url: 'https://www.builderscore.xyz/' }
+      { name: 'Builder Rewards', url: 'https://www.builderscore.xyz/' },
+      { name: 'Builder Score (docs)', url: 'https://docs.talentprotocol.com/docs/protocol-concepts/scoring-systems/builder-score' },
+      { name: 'Builder Score Levels (docs)', url: 'https://docs.talentprotocol.com/docs/protocol-concepts/scoring-systems/builder-score/builder-score-levels' }
     ]
   },
   {
     id: 'based-nouns',
-    image: 'https://picsum.photos/seed/nouns/200',
+    image: '/badges/basednounsbadge.png',
     name: 'Based Nouns Holder',
     tag: 'Base',
     description: 'Hold Based Nouns NFTs on Base to unlock tiers.',
@@ -96,12 +99,12 @@ export const BADGES_DATA: Badge[] = [
     howToProgress: 'Acquire more Based Nouns.',
     tiers: ['Holder', 'Whale'],
     links: [
-        { name: 'Open OpenSea', url: 'https://opensea.io/collection/based-nouns' }
+        { name: 'Open Based Nouns (OpenSea)', url: 'https://opensea.io/collection/based-nouns' }
     ]
   },
   {
     id: 'lil-nouns',
-    image: 'https://picsum.photos/seed/lil/200',
+    image: '/badges/lnbadge.png',
     name: 'Lil Nouns Holder',
     tag: 'Ethereum',
     description: 'Hold Lil Nouns NFTs on Ethereum Mainnet to unlock tiers.',
@@ -109,12 +112,13 @@ export const BADGES_DATA: Badge[] = [
     howToProgress: 'Buy Lil Nouns.',
     tiers: ['Holder', 'Collector'],
     links: [
-        { name: 'Open OpenSea', url: 'https://opensea.io/collection/lil-nouns' }
+        { name: 'Open Lil Nouns (OpenSea)', url: 'https://opensea.io/collection/lil-nouns' },
+        { name: 'Lil Nouns — LinkTree', url: 'https://linktr.ee/lilnounsdao' }
     ]
   },
   {
     id: 'nouns-holder',
-    image: 'https://picsum.photos/seed/nounsh/200',
+    image: '/badges/nhbadge.png',
     name: 'Nouns Holder',
     tag: 'Ethereum',
     description: 'Hold Nouns NFTs on Ethereum Mainnet to unlock tiers.',
@@ -122,12 +126,13 @@ export const BADGES_DATA: Badge[] = [
     howToProgress: 'Win a Nouns auction.',
     tiers: ['Nounder'],
     links: [
+        { name: 'Open Nouns (OpenSea)', url: 'https://opensea.io/collection/nouns' },
         { name: 'Nouns.wtf', url: 'https://nouns.wtf/' }
     ]
   },
   {
     id: 'giveth',
-    image: 'https://picsum.photos/seed/giveth/200',
+    image: '/badges/gdonorbadge.png',
     name: 'Giveth Donor',
     tag: 'Optimism',
     description: 'Donate on Giveth to support public goods; tiers reflect total USD donated.',
@@ -140,7 +145,7 @@ export const BADGES_DATA: Badge[] = [
   },
   {
     id: 'gitcoin',
-    image: 'https://picsum.photos/seed/gitcoin/200',
+    image: '/badges/gtcdbadge.png',
     name: 'Gitcoin Donor',
     tag: 'Optimism',
     description: 'Donate on Gitcoin to fund public goods; tiers reflect total USD donated.',
@@ -148,28 +153,29 @@ export const BADGES_DATA: Badge[] = [
     howToProgress: 'Donate during rounds.',
     tiers: ['Donor', 'Patron'],
     links: [
-        { name: 'Open Gitcoin', url: 'https://grants.gitcoin.co/' }
+        { name: 'Open Gitcoin Grants', url: 'https://grants.gitcoin.co/' }
     ]
   },
   {
     id: 'worldcoin-verify',
-    image: 'https://picsum.photos/seed/world/200',
+    image: '/badges/wcvbadge.png',
     name: 'Worldcoin Verification',
     tag: 'World',
-    description: 'Verify your personhood with World App to unlock proof-of-uniqueness benefits.',
+    description: 'Verify your personhood with World App to unlock proof-of-uniqueness benefits across supported apps.',
     whyItMatters: 'Proof of Personhood.',
     howToProgress: 'Verify at an orb.',
     tiers: ['Verified'],
     links: [
-        { name: 'Get World App', url: 'https://world.org/' }
+        { name: 'Get World App (Android)', url: 'https://play.google.com/store/apps/details?id=com.worldcoin' },
+        { name: 'Get World App (iOS)', url: 'https://apps.apple.com/no/app/world-app-worldcoin-wallet/id1560859847' }
     ]
   },
   {
     id: 'world-user',
-    image: 'https://picsum.photos/seed/wuser/200',
+    image: '/badges/wubadge.png',
     name: 'World User',
     tag: 'World',
-    description: 'Make onchain transactions on the World chain.',
+    description: 'Make onchain transactions on the World chain. Higher tiers reflect more activity and a deeper footprint in the World ecosystem.',
     whyItMatters: 'Activity on World Chain.',
     howToProgress: 'Transact more.',
     tiers: ['Active', 'Power User'],
@@ -179,10 +185,10 @@ export const BADGES_DATA: Badge[] = [
   },
   {
     id: 'base-user',
-    image: 'https://picsum.photos/seed/base/200',
+    image: '/badges/baseuserbadge.png',
     name: 'Base User',
     tag: 'Base',
-    description: 'Make onchain transactions on the Base layer-2 network.',
+    description: 'Make onchain transactions on the Base layer-2 network. Higher tiers reflect more activity and a deeper footprint in the Base ecosystem.',
     whyItMatters: 'Core ecosystem activity.',
     howToProgress: 'Use dApps on Base.',
     tiers: ['Newbie', 'Native'],
@@ -192,23 +198,23 @@ export const BADGES_DATA: Badge[] = [
   },
   {
     id: 'op-user',
-    image: 'https://picsum.photos/seed/op/200',
+    image: '/badges/opuserbadge.png',
     name: 'OP Mainnet User',
     tag: 'OP Mainnet',
-    description: 'Make onchain transactions on OP Mainnet, the original Optimism network.',
+    description: 'Make onchain transactions on OP Mainnet, the original Optimism network. Higher tiers reflect more activity and a deeper footprint in the OP Mainnet ecosystem.',
     whyItMatters: 'OG Optimism activity.',
     howToProgress: 'Transact on OP Mainnet.',
     tiers: ['User', 'Power User'],
     links: [
-        { name: 'Learn about OP', url: 'https://www.superchain.eco/chains/op-mainnet' }
+        { name: 'Learn about OP Mainnet', url: 'https://www.superchain.eco/chains/op-mainnet' }
     ]
   },
   {
     id: 'mode-user',
-    image: 'https://picsum.photos/seed/mode/200',
+    image: '/badges/modeuserbadge.png',
     name: 'Mode User',
     tag: 'Mode',
-    description: 'Make onchain transactions on Mode, the Ethereum L2 focused on sequencing and yield.',
+    description: 'Make onchain transactions on Mode, the Ethereum L2 focused on sequencing and yield. Higher tiers reflect more activity and a deeper footprint in the Mode ecosystem.',
     whyItMatters: 'DeFi activity.',
     howToProgress: 'Participate in Mode Early Campaign.',
     tiers: ['Early', 'Degen'],
@@ -218,10 +224,10 @@ export const BADGES_DATA: Badge[] = [
   },
   {
     id: 'unichain-user',
-    image: 'https://picsum.photos/seed/uni/200',
+    image: '/badges/uniuserbadge.png',
     name: 'Unichain User',
     tag: 'Unichain',
-    description: 'Make onchain transactions on Unichain, the L2 focused around the Uniswap ecosystem.',
+    description: 'Make onchain transactions on Unichain, the L2 focused around the Uniswap ecosystem. Higher tiers reflect more activity and a deeper footprint in the Unichain ecosystem.',
     whyItMatters: 'DEX activity.',
     howToProgress: 'Swap on Unichain.',
     tiers: ['Swapper'],
@@ -231,46 +237,46 @@ export const BADGES_DATA: Badge[] = [
   },
   {
     id: 'lisk-user',
-    image: 'https://picsum.photos/seed/lisk/200',
+    image: '/badges/liskuserbadge.png',
     name: 'Lisk User',
     tag: 'Lisk',
-    description: 'Make onchain transactions on Lisk, an OP Stack chain in the Superchain ecosystem.',
+    description: 'Make onchain transactions on Lisk, an OP Stack chain in the Superchain ecosystem. Higher tiers reflect more activity and a deeper footprint in the Lisk ecosystem.',
     whyItMatters: 'Emerging chain activity.',
     howToProgress: 'Bridge to Lisk.',
     tiers: ['Explorer'],
     links: [
-        { name: 'Explore Lisk', url: 'https://lisk.com/ecosystem/' }
+        { name: 'Explore the Lisk ecosystem', url: 'https://lisk.com/ecosystem/' }
     ]
   },
   {
     id: 'soneium-user',
-    image: 'https://picsum.photos/seed/son/200',
+    image: '/badges/soneiumuserbadge.png',
     name: 'Soneium User',
     tag: 'Soneium',
-    description: 'Make onchain transactions on Soneium, an OP Stack L2 in the Superchain ecosystem.',
+    description: 'Make onchain transactions on Soneium, an OP Stack L2 in the Superchain ecosystem. Higher tiers reflect more activity and a deeper footprint in the Soneium ecosystem.',
     whyItMatters: 'Ecosystem growth.',
     howToProgress: 'Transact on Soneium.',
     tiers: ['Early Adopter'],
     links: [
-        { name: 'Explore Soneium', url: 'https://soneium.org/en/ecosystem/' }
+        { name: 'Explore the Soneium ecosystem', url: 'https://soneium.org/en/ecosystem/' }
     ]
   },
   {
     id: 'ink-user',
-    image: 'https://picsum.photos/seed/ink/200',
+    image: '/badges/inkuserbadge.png',
     name: 'Ink User',
     tag: 'Ink',
-    description: 'Make onchain transactions on Ink, Kraken’s OP Stack L2 in the Optimism Superchain.',
+    description: 'Make onchain transactions on Ink, Kraken’s OP Stack L2 in the Optimism Superchain. Higher tiers reflect more activity and a deeper footprint in the Ink ecosystem.',
     whyItMatters: 'Exchange chain activity.',
     howToProgress: 'Use Ink dApps.',
     tiers: ['Inker'],
     links: [
-        { name: 'Explore Ink', url: 'https://inkonchain.com/apps' }
+        { name: 'Explore Ink apps', url: 'https://inkonchain.com/apps' }
     ]
   },
   {
     id: 'early-power',
-    image: 'https://picsum.photos/seed/epu/200',
+    image: '/badges/epubadge.png',
     name: 'Early Power User',
     tag: 'Optimism',
     description: 'Be among the first 100 accounts to reach Level 3.',
@@ -281,7 +287,7 @@ export const BADGES_DATA: Badge[] = [
   },
   {
     id: 'super-cohort',
-    image: 'https://picsum.photos/seed/sc24/200',
+    image: '/badges/sc24badge.png',
     name: 'Super Cohort 24',
     tag: 'Optimism',
     description: 'Graduated from Super Cohort 0. Note: this program/badge is no longer available to join.',
@@ -289,54 +295,56 @@ export const BADGES_DATA: Badge[] = [
     howToProgress: 'Legacy badge.',
     tiers: ['Graduate'],
     links: [
-        { name: 'Recap', url: 'https://www.superchain.eco/insights/announcing-super-contributor-cohort-0' }
+        { name: 'Announcement / recap', url: 'https://www.superchain.eco/insights/announcing-super-contributor-cohort-0' }
     ]
   },
   {
     id: 's7-user',
-    image: 'https://picsum.photos/seed/s7/200',
+    image: '/badges/s7subadge.png',
     name: 'S7 Super User',
     tag: 'Superchain (Season 7)',
-    description: 'Make transactions across Superchain during Season 7.',
+    description: 'Make transactions across Superchain during Season 7. Higher tiers reflect more onchain activity across supported chains.',
     whyItMatters: 'Seasonal activity.',
     howToProgress: 'Legacy badge.',
     tiers: ['Super User'],
     links: [
-        { name: 'Explore Chains', url: 'https://www.superchain.eco/chains' }
+        { name: 'Explore Superchain chains', url: 'https://www.superchain.eco/chains' }
     ]
   },
   {
     id: 's8-user',
-    image: 'https://picsum.photos/seed/s8/200',
+    image: '/badges/s8subadge.png',
     name: 'S8 Super User',
     tag: 'Superchain (Season 8)',
-    description: 'Make transactions across Superchain during Season 8.',
+    description: 'Make transactions across Superchain during Season 8. Higher tiers reflect more onchain activity across supported chains.',
     whyItMatters: 'Current seasonal activity.',
     howToProgress: 'Transact across chains.',
     tiers: ['Active'],
     links: [
-        { name: 'Explore Chains', url: 'https://www.superchain.eco/chains' }
+        { name: 'Explore Superchain chains', url: 'https://www.superchain.eco/chains' }
     ]
   },
   {
     id: 'self-verify',
-    image: 'https://picsum.photos/seed/self/200',
+    image: '/badges/selfbadge.png',
     name: 'Self Verification',
     tag: 'Celo',
-    description: 'Verify your uniqueness and country using Self Protocol’s ZK passport on Celo.',
+    description: 'Verify your uniqueness and country using Self Protocol’s ZK passport on Celo. Additionally, Self launched a points campaign.',
     whyItMatters: 'Identity verification.',
     howToProgress: 'Use Self App.',
     tiers: ['Verified'],
     links: [
-        { name: 'Join Self', url: 'https://referral.self.xyz/referral/0x4B741c1047419557D2d1Ac0014A723BBFa3Efcbb' }
+        { name: 'Join Self', url: 'https://referral.self.xyz/referral/0x4B741c1047419557D2d1Ac0014A723BBFa3Efcbb' },
+        { name: 'Get Self (Android)', url: 'https://play.google.com/store/apps/details?id=com.proofofpassportapp' },
+        { name: 'Get Self (iOS)', url: 'https://apps.apple.com/fr/app/self-zk-passport-identity/id6478563710' }
     ]
   },
   {
     id: 'superstacks',
-    image: 'https://picsum.photos/seed/stacks/200',
+    image: '/badges/superstacksbadge.png',
     name: 'SuperStacks',
     tag: 'Superchain (Season 7)',
-    description: 'XP earned during the SuperStacks campaign (Season 7).',
+    description: 'XP earned during the SuperStacks campaign (Season 7). Note: this campaign has ended and the badge is no longer obtainable.',
     whyItMatters: 'Campaign participation.',
     howToProgress: 'Ended.',
     tiers: ['Participant'],
@@ -346,24 +354,24 @@ export const BADGES_DATA: Badge[] = [
   },
   {
     id: 'lisk-airdrop',
-    image: 'https://picsum.photos/seed/liska/200',
+    image: '/badges/liskabadge.png',
     name: 'Lisk Airdrop S1',
     tag: 'Lisk',
-    description: 'Seasonal airdrop on the Lisk OP Stack chain.',
+    description: 'Seasonal airdrop on the Lisk OP Stack chain. Join the verified airdrop Guild and complete tasks to earn Season 1 points and LSK rewards.',
     whyItMatters: 'Rewards.',
     howToProgress: 'Complete Guild tasks.',
     tiers: ['Eligible'],
     links: [
-        { name: 'How To', url: 'https://www.superchain.eco/insights/how-to-lisk-airdrop-season-1' },
-        { name: 'Portal', url: 'https://portal.lisk.com/' }
+        { name: 'How To: Lisk Airdrop Season 1', url: 'https://www.superchain.eco/insights/how-to-lisk-airdrop-season-1' },
+        { name: 'Open Lisk Airdrop portal', url: 'https://portal.lisk.com/' }
     ]
   },
   {
     id: 'lisk-surge',
-    image: 'https://picsum.photos/seed/surge/200',
+    image: '/badges/lisksurgebadge.png',
     name: 'Lisk Surge',
     tag: 'Lisk',
-    description: 'LSK earned during the Lisk Surge campaign (Season 7).',
+    description: 'LSK earned during the Lisk Surge campaign (Season 7). Earn more LSK to reach higher tiers.',
     whyItMatters: 'Liquidity provision.',
     howToProgress: 'Ended.',
     tiers: ['Surger'],
@@ -373,7 +381,7 @@ export const BADGES_DATA: Badge[] = [
   },
   {
     id: 'eth-vault',
-    image: 'https://picsum.photos/seed/ethv/200',
+    image: '/badges/ethvdbadge.png',
     name: 'ETH Vault Deposits',
     tag: 'OP Mainnet',
     description: 'Deposit ETH into the WETH Super Vaults on OP Mainnet to progress through reward tiers.',
@@ -381,12 +389,12 @@ export const BADGES_DATA: Badge[] = [
     howToProgress: 'Deposit more ETH.',
     tiers: ['Saver', 'Whale'],
     links: [
-        { name: 'Open Vaults', url: 'https://account.superchain.eco/vaults' }
+        { name: 'Open Superchain Vaults', url: 'https://account.superchain.eco/vaults' }
     ]
   },
   {
     id: 'citizen',
-    image: 'https://picsum.photos/seed/citi/200',
+    image: '/badges/citibadge.png',
     name: 'Citizen',
     tag: 'OP Mainnet',
     description: 'Become an Optimism Citizen by owning a wallet that has been granted Citizenship on OP Mainnet.',
@@ -394,7 +402,7 @@ export const BADGES_DATA: Badge[] = [
     howToProgress: 'Contribution to governance.',
     tiers: ['Citizen'],
     links: [
-        { name: 'Learn about Citizenship', url: 'https://atlas.optimism.io/citizenship' }
+        { name: 'Learn about Optimism Citizenship', url: 'https://atlas.optimism.io/citizenship' }
     ]
   }
 ];
