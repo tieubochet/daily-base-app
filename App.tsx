@@ -199,7 +199,7 @@ const App: React.FC = () => {
          
          <div className="mr-1 leading-tight flex-1">
              <div className="text-xl md:text-2xl font-extrabold text-white">Daily Base App</div>
-             <div className="text-xs md:text-sm opacity-80 text-blue-100">Ecosystem · Staking · Governance</div>
+             <div className="text-xs md:text-sm opacity-80 text-blue-100">Build your onchain habit</div>
          </div>
 
          {/* Right Side Actions */}
