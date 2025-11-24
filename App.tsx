@@ -388,7 +388,7 @@ const App: React.FC = () => {
                 </div>
 
                 {/* Scrollable Content */}
-                <div className="p-6 pt-2 overflow-y-auto flex-1 space-y-6 mb-20"> 
+                <div className="p-6 pt-2 overflow-y-auto flex-1 space-y-6"> 
                     {/* Why it matters */}
                     <div>
                         <h4 className="font-bold text-sm mb-2">Why it matters</h4>
@@ -416,19 +416,20 @@ const App: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Fixed Bottom Action Button */}
-                <div className="absolute bottom-0 left-0 w-full p-4 bg-white dark:bg-[#1E293B] border-t border-gray-200 dark:border-white/10">
-                    {selectedBadge.links.length > 0 && (
+                {/* Flexible Footer Action Buttons */}
+                <div className="shrink-0 w-full p-4 bg-white dark:bg-[#1E293B] border-t border-gray-200 dark:border-white/10 flex flex-wrap gap-3">
+                    {selectedBadge.links.map((link, idx) => (
                         <a 
-                            href={selectedBadge.links[0].url} 
+                            key={idx}
+                            href={link.url} 
                             target="_blank" 
                             rel="noreferrer"
-                            className="flex items-center justify-between px-6 h-12 w-full bg-black text-white font-bold rounded-xl hover:opacity-90 transition-opacity"
+                            className="flex items-center justify-between px-6 h-12 flex-1 min-w-[40%] bg-black text-white font-bold rounded-xl hover:opacity-90 transition-opacity whitespace-nowrap"
                         >
-                            <span>{selectedBadge.links[0].name}</span>
-                            <ExternalLink size={18} />
+                            <span>{link.name}</span>
+                            <ExternalLink size={18} className="ml-2" />
                         </a>
-                    )}
+                    ))}
                 </div>
             </div>
         </>
