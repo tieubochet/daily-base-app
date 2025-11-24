@@ -8,9 +8,6 @@ interface BadgeItemProps {
 }
 
 export const BadgeItem: React.FC<BadgeItemProps> = ({ badge, onSelect }) => {
-  // Use the first link as the primary action button
-  const primaryLink = badge.links[0];
-
   return (
     <div className="flex flex-col md:flex-row items-start md:items-center gap-4 py-5 border-b border-white/10 last:border-0 w-full">
       {/* Left: Icon/Image */}
@@ -43,20 +40,21 @@ export const BadgeItem: React.FC<BadgeItemProps> = ({ badge, onSelect }) => {
           </p>
       </div>
 
-      {/* Right: Primary Action Button */}
-      {primaryLink && (
-          <div className="shrink-0 w-full md:w-auto mt-2 md:mt-0">
-              <a
-                  href={primaryLink.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-center gap-2 h-10 px-5 rounded-lg text-sm font-bold bg-black text-white border border-white/20 hover:bg-gray-900 hover:scale-[1.02] transition-all w-full md:w-auto shadow-md whitespace-nowrap"
-                  onClick={(e) => e.stopPropagation()}
-              >
-                  {primaryLink.name} <ExternalLink size={14} />
-              </a>
-          </div>
-      )}
+      {/* Right: Action Buttons */}
+      <div className="shrink-0 w-full md:w-auto mt-2 md:mt-0 flex flex-col gap-2 items-stretch md:items-end">
+        {badge.links.map((link, index) => (
+            <a
+                key={index}
+                href={link.url}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-2 h-9 px-4 rounded-lg text-sm font-bold bg-black text-white border border-white/20 hover:bg-gray-900 hover:scale-[1.02] transition-all w-full md:w-auto shadow-md whitespace-nowrap"
+                onClick={(e) => e.stopPropagation()}
+            >
+                {link.name} <ExternalLink size={12} />
+            </a>
+        ))}
+      </div>
     </div>
   );
 };
