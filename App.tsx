@@ -3,6 +3,8 @@ import sdk from '@farcaster/frame-sdk';
 import {
   ConnectButton,
   useConnectModal,
+  useAccountModal,
+  useChainModal,
 } from '@rainbow-me/rainbowkit';
 import {
   useAccount,
@@ -10,21 +12,20 @@ import {
   useReadContract,
   useWriteContract,
   useWaitForTransactionReceipt,
+  useTransactionCount,
 } from 'wagmi';
 import { base } from 'wagmi/chains';
 import { formatUnits } from 'viem';
 import {
   Settings,
-  Moon,
-  Sun,
   Wallet,
   Globe,
-  ShieldCheck,
-  Award,
+  Flame,
   ExternalLink,
   X,
   Loader2,
   Zap,
+  ArrowRight
 } from 'lucide-react';
 
 import { Card } from './components/Card';
@@ -65,14 +66,21 @@ const App: React.FC = () => {
   const [selectedBadge, setSelectedBadge] = useState<Badge | null>(null);
 
   // --- Web3 Hooks ---
-  const { address, isConnected } = useAccount();
+  const { address, isConnected, chain } = useAccount();
   const { openConnectModal } = useConnectModal();
+  const { openAccountModal } = useAccountModal();
+  const { openChainModal } = useChainModal();
+
   const { data: balanceData } = useBalance({
     address: address,
   });
 
+  const { data: txCountData } = useTransactionCount({
+    address: address,
+  });
+
   // --- Contract Hooks (Simulation) ---
-  const { data: streakData } = useReadContract({
+  const { data: streakData, refetch: refetchStreak } = useReadContract({
     address: MOCK_CONTRACT_ADDRESS,
     abi: MOCK_ABI,
     functionName: 'streak',
@@ -86,6 +94,12 @@ const App: React.FC = () => {
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
     hash,
   });
+
+  useEffect(() => {
+    if (isConfirmed) {
+        refetchStreak();
+    }
+  }, [isConfirmed, refetchStreak]);
 
   // --- Farcaster Initialization ---
   useEffect(() => {
@@ -143,104 +157,110 @@ const App: React.FC = () => {
     <div className="min-h-screen flex flex-col items-center overflow-x-hidden font-sans pb-10" style={{ backgroundColor: 'var(--bg-app)', color: 'var(--text-primary)' }}>
       
       {/* --- HEADER --- */}
-      <header className="w-full max-w-[1100px] mx-auto p-4 pt-4 flex items-center gap-3 flex-wrap">
+      <header className="w-full max-w-[1100px] mx-auto p-4 flex items-center gap-3 flex-wrap">
          {/* Logo Placeholder */}
-         <div className="w-8 h-8 rounded-lg bg-blue-500/50 flex items-center justify-center border border-white/20">
-             <Globe size={18} className="text-white" />
+         <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center border border-white/20 shrink-0">
+             <div className="w-6 h-6 rounded-full border-2 border-yellow-400 flex items-center justify-center">
+                <span className="text-[10px] font-bold text-yellow-400">DB</span>
+             </div>
          </div>
          
-         <div className="mr-1 leading-[1.05]">
-             <div className="text-[22px] font-extrabold text-white">Daily Base App</div>
-             <div className="text-xs opacity-90">Ecosystem - Superchain Eco</div>
+         <div className="mr-1 leading-tight flex-1">
+             <div className="text-xl md:text-2xl font-extrabold text-white">Daily Base App</div>
+             <div className="text-xs md:text-sm opacity-80 text-blue-100">Ecosystem · Staking · Governance</div>
          </div>
 
-         {/* Superchain Button */}
-         <a 
-            href="https://www.superchain.eco/" 
-            target="_blank" 
-            rel="noreferrer"
-            className="hidden sm:inline-flex items-center gap-2 h-9 px-3 rounded-xl text-sm font-semibold border border-white/20 bg-white/10 text-[#E6E8F0] hover:bg-white/20 transition-colors"
-         >
-            <Zap size={14} /> Superchain
-         </a>
-
-         <div className="flex-1"></div>
-
-         {/* Connect Button */}
+         {/* Right Side Actions */}
          <div className="flex items-center gap-2">
-            {!isConnected && (
+            {!isConnected ? (
                 <button
                     onClick={openConnectModal}
-                    className="flex items-center gap-2 h-9 px-3 rounded-xl text-sm font-semibold border border-white/20 bg-white/10 text-[#E6E8F0] hover:bg-white/20 transition-colors"
+                    className="flex items-center gap-2 h-10 px-4 rounded-lg text-sm font-bold bg-white text-[#003AD1] hover:bg-gray-100 transition-colors shadow-lg"
                 >
-                    Connect Wallet
+                    <Wallet size={16} /> Connect Wallet
                 </button>
+            ) : (
+                <>
+                    {/* Address Button */}
+                    <button 
+                        onClick={openAccountModal}
+                        className="hidden sm:flex items-center gap-2 h-10 px-4 rounded-lg text-sm font-bold bg-black text-white hover:bg-gray-900 transition-colors border border-white/10"
+                    >
+                         <Wallet size={16} />
+                         {address?.slice(0, 6)}...{address?.slice(-4)}
+                    </button>
+
+                    {/* Streak / Check-in Button */}
+                    <button
+                        onClick={handleCheckIn}
+                        disabled={isPending || isConfirming || isConfirmed}
+                        className={`
+                            flex items-center gap-2 h-10 px-4 rounded-lg text-sm font-bold border transition-all shadow-md
+                            ${isConfirmed 
+                                ? 'bg-green-500 text-white border-green-600' 
+                                : 'bg-[#FFC800] text-black border-[#E6B400] hover:bg-[#FFD633]'
+                            }
+                        `}
+                    >
+                        {isPending || isConfirming ? (
+                            <Loader2 className="animate-spin w-4 h-4" />
+                        ) : (
+                            <Flame className={`w-4 h-4 ${isConfirmed ? 'fill-white' : 'fill-black'}`} />
+                        )}
+                        <span className="hidden sm:inline">Daily Streak:</span> 
+                        <span className="font-mono text-base">{streakData ? String(streakData) : '0'}</span>
+                    </button>
+                </>
             )}
-            {isConnected && (
-                 <div className="scale-90 origin-right">
-                    <ConnectButton accountStatus="avatar" chainStatus="none" showBalance={false} />
-                 </div>
-            )}
-            
-            {/* Social / Theme Buttons */}
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="hidden md:flex items-center justify-center w-9 h-9 rounded-xl border border-white/20 bg-transparent text-[#E6E8F0] hover:bg-white/10">
-                <Settings size={18} />
-            </a>
 
             <button 
                 onClick={toggleTheme}
-                className="flex items-center justify-center w-9 h-9 rounded-xl border border-white/20 bg-transparent text-[#E6E8F0] hover:bg-white/10"
+                className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#FFEC99] text-black hover:bg-[#FFD633] transition-colors shadow-sm"
+                aria-label="Toggle Theme"
             >
-                {themeMode === 'light' ? '🌗' : '☀️'}
+                {themeMode === 'light' ? '☀️' : '🌗'}
             </button>
          </div>
       </header>
 
       {/* --- MAIN CONTENT --- */}
-      <main className="w-full max-w-[1100px] px-4 flex flex-col gap-6 mt-2">
+      <main className="w-full max-w-[1100px] px-4 flex flex-col gap-6 mt-4">
         
-        {/* --- SESSION WALLET (Preserved functionality) --- */}
-        <Card className="p-0 overflow-hidden">
-            <div className="p-6 relative">
-                 <div className="absolute top-0 right-0 p-6 opacity-10 text-white">
-                    <Wallet size={80} />
-                 </div>
-                 <h2 className="text-sm font-medium opacity-80 mb-1">Total Balance</h2>
-                 <div className="text-3xl font-bold mb-4">
-                    {isConnected && balanceData
-                        ? `${parseFloat(formatUnits(balanceData.value, balanceData.decimals)).toFixed(4)} ${balanceData.symbol}`
-                        : '---'}
-                 </div>
+        {/* --- NEW WALLET CARD DESIGN --- */}
+        <div className="bg-white rounded-xl p-6 md:p-8 shadow-xl relative overflow-hidden w-full text-black min-h-[140px] flex flex-col justify-center border border-white/20">
+             {/* Watermark */}
+             <div className="absolute -right-6 -bottom-8 opacity-[0.05] pointer-events-none transform rotate-[-10deg]">
+                <Wallet size={180} color="black" />
+             </div>
 
-                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-white/10 pt-4 mt-2">
-                    <div>
-                        <span className="text-xs opacity-70 block">Daily Streak</span>
-                        <span className="text-xl font-mono font-bold text-accent">
-                             {streakData ? String(streakData) : '0'} Days
-                        </span>
-                    </div>
-                    <button
-                        onClick={handleCheckIn}
-                        disabled={isPending || isConfirming || isConfirmed}
-                        className={`
-                            flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold shadow-sm transition-all
-                            ${isConfirmed
-                                ? 'bg-green-500/80 border border-green-400 text-white'
-                                : 'bg-white/10 border border-white/20 text-white hover:bg-white/20'}
-                        `}
+             <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Wallet Balance</h2>
+             
+             {!isConnected ? (
+                 <div className="flex flex-col items-start gap-1">
+                    <div className="text-2xl font-medium text-gray-800">Not connected</div>
+                    <button 
+                        onClick={openConnectModal}
+                        className="text-sm font-bold text-[#003AD1] flex items-center gap-1 hover:underline"
                     >
-                        {isPending || isConfirming ? (
-                            <Loader2 className="animate-spin w-4 h-4" />
-                        ) : isConfirmed ? (
-                            <ShieldCheck className="w-4 h-4" />
-                        ) : (
-                            <Zap className="w-4 h-4" />
-                        )}
-                        {isConfirmed ? 'Checked In' : 'Daily Check-in'}
+                        Connect to show status <ArrowRight size={14} />
                     </button>
                  </div>
-            </div>
-        </Card>
+             ) : (
+                 <div className="flex flex-wrap items-baseline gap-3 z-10">
+                    <div className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
+                        {balanceData
+                            ? parseFloat(formatUnits(balanceData.value, balanceData.decimals)).toFixed(4)
+                            : '0.0000'}
+                    </div>
+                    <div className="text-xl md:text-2xl font-normal text-gray-500">
+                        {balanceData?.symbol}
+                        <span className="ml-2 text-lg text-gray-400">
+                            ({txCountData ? txCountData.toString() : '0'} txs)
+                        </span>
+                    </div>
+                 </div>
+             )}
+        </div>
 
         {/* --- ECOSYSTEM SECTION --- */}
         <Card className="text-center p-6">
