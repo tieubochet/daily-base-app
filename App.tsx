@@ -328,15 +328,15 @@ const App: React.FC = () => {
         </div>
 
         {/* --- BADGES SECTION --- */}
-        <Card className="text-center p-6">
-            <div className="flex flex-col items-center mb-6">
+        <Card className="p-0 overflow-hidden">
+            <div className="flex flex-col items-center p-6 border-b border-white/10 text-center">
                 <div className="font-extrabold text-2xl mb-2 text-primary">Badges</div>
                 <div className="opacity-80 text-sm max-w-lg text-secondary">
                     Short, Base-aligned explanations to earn Superchain Eco badges with confidence.
                 </div>
             </div>
             
-            <div className="flex flex-col items-center gap-4 w-full">
+            <div className="flex flex-col w-full px-6 pb-2">
                 {BADGES_DATA.map((badge) => (
                     <BadgeItem key={badge.id} badge={badge} onSelect={setSelectedBadge} />
                 ))}

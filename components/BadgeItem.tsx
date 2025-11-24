@@ -1,6 +1,6 @@
 import React from 'react';
 import { Badge } from '../types';
-import { ExternalLink, ChevronRight } from 'lucide-react';
+import { ExternalLink, Info } from 'lucide-react';
 
 interface BadgeItemProps {
   badge: Badge;
@@ -8,49 +8,55 @@ interface BadgeItemProps {
 }
 
 export const BadgeItem: React.FC<BadgeItemProps> = ({ badge, onSelect }) => {
+  // Use the first link as the primary action button
+  const primaryLink = badge.links[0];
+
   return (
-    <div className="flex flex-col sm:flex-row gap-4 p-4 items-start sm:items-center w-full">
-        {/* Image */}
+    <div className="flex flex-col md:flex-row items-start md:items-center gap-4 py-5 border-b border-white/10 last:border-0 w-full">
+      {/* Left: Icon/Image */}
+      <div className="shrink-0">
         <img
             src={badge.image}
             alt={badge.name}
-            className="w-16 h-16 rounded-xl object-cover border border-white/10 flex-shrink-0"
+            className="w-14 h-14 rounded-xl object-cover border border-white/10 bg-black/20 shadow-sm"
         />
+      </div>
 
-        {/* Content */}
-        <div className="flex-1 w-full max-w-[640px]">
-            <div className="flex flex-wrap items-center gap-2 mb-1">
-                <h3 className="text-base font-extrabold text-primary m-0">{badge.name}</h3>
-                <span className="inline-flex items-center px-2 py-0.5 rounded-full border border-white/20 bg-[#101830]/30 text-xs text-white">
-                    {badge.tag}
-                </span>
-            </div>
-            <p className="text-sm text-[#C9D1D9] m-0 mb-2 leading-tight">
-                {badge.description}
-            </p>
+      {/* Middle: Content */}
+      <div className="flex-1 min-w-0 flex flex-col items-start text-left gap-1 w-full">
+          <div className="flex items-center flex-wrap gap-2">
+              <h3 className="text-lg font-bold text-primary truncate leading-tight">
+                  {badge.name}
+              </h3>
+              
+              {/* Details Pill */}
+              <button
+                onClick={() => onSelect(badge)}
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-white/10 hover:bg-white/20 text-secondary border border-white/10 transition-colors uppercase tracking-wide cursor-pointer"
+              >
+                <Info size={10} /> Details
+              </button>
+          </div>
+          
+          <p className="text-sm text-secondary/80 leading-snug line-clamp-2 md:line-clamp-1 font-medium">
+              {badge.description}
+          </p>
+      </div>
 
-            {/* Buttons */}
-            <div className="flex flex-wrap gap-2 mt-2">
-                <button
-                    onClick={() => onSelect(badge)}
-                    className="flex items-center gap-2 h-9 px-3 rounded-xl text-sm font-semibold border border-white/20 bg-white/10 text-white hover:bg-white/20 transition-colors"
-                >
-                    Details
-                </button>
-                {badge.links.slice(0, 2).map((link, i) => (
-                    <a
-                        key={i}
-                        href={link.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex items-center gap-2 h-9 px-3 rounded-xl text-sm font-semibold border border-white/20 bg-white/10 text-white hover:bg-white/20 transition-colors no-underline"
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        {link.name}
-                    </a>
-                ))}
-            </div>
-        </div>
+      {/* Right: Primary Action Button */}
+      {primaryLink && (
+          <div className="shrink-0 w-full md:w-auto mt-2 md:mt-0">
+              <a
+                  href={primaryLink.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-2 h-10 px-5 rounded-lg text-sm font-bold bg-black text-white border border-white/20 hover:bg-gray-900 hover:scale-[1.02] transition-all w-full md:w-auto shadow-md whitespace-nowrap"
+                  onClick={(e) => e.stopPropagation()}
+              >
+                  {primaryLink.name} <ExternalLink size={14} />
+              </a>
+          </div>
+      )}
     </div>
   );
 };
