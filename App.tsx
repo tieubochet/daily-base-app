@@ -368,49 +368,67 @@ const App: React.FC = () => {
                 className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
                 onClick={() => setSelectedBadge(null)}
             />
-            <div className="fixed z-50 bg-[#1E293B] border border-white/10 shadow-2xl w-full md:w-[600px] h-[85vh] md:h-auto bottom-0 left-0 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 rounded-t-2xl md:rounded-xl overflow-y-auto animate-slide-up-mobile md:animate-fade-in text-white">
-                <div className="sticky top-0 bg-[#1E293B]/95 backdrop-blur z-10 p-4 border-b border-white/10 flex justify-between items-center">
-                    <h3 className="text-lg font-bold">{selectedBadge.name}</h3>
-                    <button onClick={() => setSelectedBadge(null)} className="p-1 hover:bg-white/10 rounded-full"><X size={24} /></button>
+            <div className="fixed z-50 bg-[#F8FAFC] dark:bg-[#1E293B] w-full md:w-[600px] max-h-[90vh] bottom-0 left-0 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 rounded-t-2xl md:rounded-xl shadow-2xl overflow-hidden flex flex-col animate-slide-up-mobile md:animate-fade-in text-[#0F172A] dark:text-white">
+                
+                {/* Header Section */}
+                <div className="p-6 pb-2 flex justify-between items-start shrink-0">
+                    <div className="flex gap-4 items-center">
+                        <BadgeIcon name={selectedBadge.name} className="w-16 h-16 text-2xl rounded-xl" />
+                        <div>
+                            <h3 className="text-xl font-extrabold leading-tight">{selectedBadge.name}</h3>
+                            <div className="text-sm opacity-60 mt-1 font-medium">Chain: {selectedBadge.tag}</div>
+                        </div>
+                    </div>
+                    <button 
+                        onClick={() => setSelectedBadge(null)} 
+                        className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+                    >
+                        <X size={24} />
+                    </button>
                 </div>
-                <div className="p-6 space-y-6">
-                    <div className="flex flex-col items-center text-center">
-                         {/* Replaced img with BadgeIcon */}
-                         <BadgeIcon name={selectedBadge.name} className="w-24 h-24 text-4xl mb-4" />
-                         <span className="inline-block px-3 py-1 bg-white/10 text-xs font-bold rounded-full border border-white/20 mb-2">
-                            {selectedBadge.tag}
-                         </span>
-                         <p className="text-[#C9D1D9]">{selectedBadge.description}</p>
+
+                {/* Scrollable Content */}
+                <div className="p-6 pt-2 overflow-y-auto flex-1 space-y-6 mb-20"> 
+                    {/* Why it matters */}
+                    <div>
+                        <h4 className="font-bold text-sm mb-2">Why it matters</h4>
+                        <p className="text-sm opacity-80 leading-relaxed">
+                            {selectedBadge.whyItMatters}
+                        </p>
                     </div>
 
-                    <div className="bg-black/20 p-4 rounded-xl border border-white/10">
-                        <h4 className="text-xs font-bold uppercase text-[#94A3B8] mb-2">Why it matters</h4>
-                        <p className="text-sm">{selectedBadge.whyItMatters}</p>
-                    </div>
-
-                    <div className="bg-black/20 p-4 rounded-xl border border-white/10">
-                         <h4 className="text-xs font-bold uppercase text-[#94A3B8] mb-2">How to progress</h4>
-                         <p className="text-sm">{selectedBadge.howToProgress}</p>
-                    </div>
-                    
-                    <div className="bg-black/20 p-4 rounded-xl border border-white/10">
-                        <h4 className="text-xs font-bold uppercase text-[#94A3B8] mb-2">Tiers</h4>
-                        <div className="flex gap-2 flex-wrap">
-                            {selectedBadge.tiers.map((tier, idx) => (
-                                <span key={idx} className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium">
-                                    {tier}
-                                </span>
-                            ))}
+                    {/* How to progress */}
+                    <div>
+                        <h4 className="font-bold text-sm mb-2">How to progress</h4>
+                        <div className="text-sm opacity-80 leading-relaxed">
+                             {selectedBadge.howToProgress}
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-2 pt-4">
-                        {selectedBadge.links.map((link, i) => (
-                            <a key={i} href={link.url} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 w-full py-3 bg-white text-black font-bold rounded-xl hover:opacity-90 transition-opacity">
-                                {link.name} <ExternalLink size={14} />
-                            </a>
-                        ))}
+                    {/* Tiers */}
+                    <div>
+                        <h4 className="font-bold text-sm mb-2">Tiers</h4>
+                        <ul className="list-disc pl-5 space-y-1">
+                            {selectedBadge.tiers.map((tier, idx) => (
+                                <li key={idx} className="text-sm opacity-80 pl-1">{tier}</li>
+                            ))}
+                        </ul>
                     </div>
+                </div>
+
+                {/* Fixed Bottom Action Button */}
+                <div className="absolute bottom-0 left-0 w-full p-4 bg-white dark:bg-[#1E293B] border-t border-gray-200 dark:border-white/10">
+                    {selectedBadge.links.length > 0 && (
+                        <a 
+                            href={selectedBadge.links[0].url} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="flex items-center justify-between px-6 h-12 w-full bg-black text-white font-bold rounded-xl hover:opacity-90 transition-opacity"
+                        >
+                            <span>{selectedBadge.links[0].name}</span>
+                            <ExternalLink size={18} />
+                        </a>
+                    )}
                 </div>
             </div>
         </>
