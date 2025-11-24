@@ -49,9 +49,9 @@ export const SECTION_1_LINKS: LinkItem[] = [
 ];
 
 export const ROUTINE_ITEMS = [
-    { label: 'Layer3 Quests', url: '#', primary: true },
-    { label: 'Claim $G daily', url: '#' },
-    { label: 'Lend on Aave', url: '#' }
+    { label: 'Layer3 Quests', url: 'https://app.layer3.xyz/category/base', primary: true },
+    { label: 'Base Sepolia Faucet', url: 'https://www.alchemy.com/faucets/base-sepolia' },
+    { label: 'Lend on Aave', url: 'https://app.aave.com/markets/?marketName=proto_base_v3' }
 ];
 
 export const SECTION_2_LINKS_GOV: LinkItem[] = []; // Unused in new design

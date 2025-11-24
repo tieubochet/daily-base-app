@@ -24,7 +24,7 @@ export const BadgeItem: React.FC<BadgeItemProps> = ({ badge, onSelect }) => {
               </h3>
               
               {/* Chain Tag */}
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-100 border border-blue-400/20 whitespace-nowrap">
+              <span className="opacity-80 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-100 border border-blue-400/20 whitespace-nowrap">
                 {badge.tag}
               </span>
 
