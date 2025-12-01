@@ -99,6 +99,10 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is open-source and available under the MIT License.
 
+## 🌐 Live Demo
+
+https://daily-base-app.vercel.app
+
 ---
 
 *Inspired by wenaltszn.eth. Not affiliated with Base.*
