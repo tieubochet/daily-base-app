@@ -1,0 +1,39 @@
+{
+  "frame": {
+    "name": "Daily Base App",
+    "version": "1",
+    "iconUrl": "https://daily-base-app.vercel.app/img/logo.png",
+    "homeUrl": "https://daily-base-app.vercel.app",
+    "imageUrl": "https://daily-base-app.vercel.app/img/screenshot.png",
+    "buttonTitle": "Daily Base App",
+    "splashImageUrl": "https://daily-base-app.vercel.app/img/logo.png",
+    "splashBackgroundColor": "#002B9D",
+    "webhookUrl": "https://daily-base-app.vercel.app/api/webhook",
+    "subtitle": "Build your onchain habit",
+    "description": "Turn onchain activity into a habit. Complete daily check-ins, follow low-friction guides for badges, and level up your knowledge of the Superchain ecosystem effortlessly.",
+    "screenshotUrls": [
+      "https://daily-base-app.vercel.app/img/screenshot.png"
+    ],
+    "primaryCategory": "social",
+    "tags": [
+      "social",
+      "base",
+      "miniapp",
+      "bagdes",
+      "daily-base-app"
+    ],
+    "heroImageUrl": "https://daily-base-app.vercel.app/img/hero.png",
+    "tagline": "Build your onchain habit",
+    "ogTitle": "Build your onchain habit",
+    "ogDescription": "Turn onchain activity into a habit. ",
+    "ogImageUrl": "https://daily-base-app.vercel.app/img/hero.png"
+  },
+  "accountAssociation": {
+    "header": "eyJmaWQiOjI2MDI5OSwidHlwZSI6ImF1dGgiLCJrZXkiOiIweGE1NjNDYTRFMGZmMjIzNjMzMkUyRkRmRDkxZkZEOTZlNTk0NzQ5RkYifQ",
+    "payload": "eyJkb21haW4iOiJkYWlseS1iYXNlLWFwcC52ZXJjZWwuYXBwIn0",
+    "signature": "bMMU5eV4y2PecGfnFwh5bB6fTdXq3SyXqLwA1KcrQdhdQ8WKUBbcZ54MSu2f4tnRe4bWCMarcx1gulE0OOHffxw="
+  },
+  "baseBuilder": {
+    "ownerAddress": "0x47b70DC1c32370f640E950eF3f4c8a8F95bcD1C2"
+  }
+}
