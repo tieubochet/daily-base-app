@@ -161,7 +161,7 @@ const App: React.FC = () => {
     
     const text = `🔥 I'm on a ${currentStreak}-day streak on Daily Base App! \n\nBuilding my onchain habit on @base 🔵`;
     
-    const embedUrl = 'https://daily-base-app.vercel.app'; 
+    const embedUrl = 'https://farcaster.xyz/miniapps/H4cwzep265Hq/daily-base-app'; 
     
     const shareUrl = `https://warpcast.com/~/compose?text=${encodeURIComponent(text)}&embeds[]=${encodeURIComponent(embedUrl)}`;
     sdk.actions.openUrl(shareUrl);
