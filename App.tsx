@@ -25,7 +25,8 @@ import {
   X,
   Loader2,
   Zap,
-  ArrowRight
+  ArrowRight,
+  Share
 } from 'lucide-react';
 
 import { Card } from './components/Card';
@@ -155,6 +156,17 @@ const App: React.FC = () => {
     }
   };
 
+  const handleShare = () => {
+    const currentStreak = streakData ? String(streakData) : '0';
+    
+    const text = `🔥 I'm on a ${currentStreak}-day streak on Daily Base App! \n\nBuilding my onchain habit on @base 🔵`;
+    
+    const embedUrl = 'https://daily-base-app.vercel.app'; 
+    
+    const shareUrl = `https://warpcast.com/~/compose?text=${encodeURIComponent(text)}&embeds[]=${encodeURIComponent(embedUrl)}`;
+    sdk.actions.openUrl(shareUrl);
+  };
+
   // Helper to render social icons
   const getSocialIcon = (name: string) => {
     const className = "w-5 h-5 fill-current";
@@ -245,6 +257,14 @@ const App: React.FC = () => {
                         )}
                         <span className="hidden sm:inline">Daily Streak:</span> 
                         <span className="font-mono text-base">{streakData ? String(streakData) : '0'}</span>
+                    </button>
+                    <button
+                        onClick={handleShare}
+                        className="flex items-center justify-center w-10 h-10 px-0 sm:px-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 border border-blue-500 transition-colors shadow-md ml-1"
+                        title="Share your streak on Farcaster"
+                    >
+                        <Share size={18} />
+                        <span className="hidden sm:inline ml-2 text-sm font-bold">Share</span>
                     </button>
                 </>
             )}
